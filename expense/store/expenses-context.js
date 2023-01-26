@@ -43,7 +43,8 @@ export const ExpensesContext = createContext({
 function expensesReducer(state, action) {
   switch (action.type) {
     case "ADD":
-      const id = new DataTransfer().toString() + Math.random().toString();
+      console.log("Add", action.payload);
+      const id = new Date().toString() + Math.random().toString();
       return [{ ...action.payload, id: id }, ...state];
     case "UPDATE":
       console.log("action", action);
@@ -66,6 +67,7 @@ function ExpensesContextProvider({ children }) {
   const [expensesState, dispatch] = useReducer(expensesReducer, DUMMY_EXPENSES);
 
   function addExpense(expenseData) {
+    console.log("adddispatch", expenseData);
     dispatch({ type: "ADD", payload: expenseData });
   }
 
