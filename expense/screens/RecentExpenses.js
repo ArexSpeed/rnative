@@ -1,18 +1,29 @@
 import { useContext, useEffect, useState } from "react";
 import { Text, View } from "react-native";
 import ExpensesOutput from "../components/ExpensesOutput/ExpensesOutput";
+import ErrorOverlay from "../components/UI/ErrorOverlay";
+import LoadingOverlay from "../components/UI/LoadingOverlay";
 import { ExpensesContext } from "../store/expenses-context";
 import { getDateMinusDays } from "../util/date";
 import { fetchExpenses } from "../util/http";
 
 function RecentExpenses() {
+  const [isFetching, setIsFetching] = useState(true);
+  const [error, setError] = useState();
   const expensesCtx = useContext(ExpensesContext);
   // const [fetchedExpenses, setFetchedExpenses] = useState([]);
 
   useEffect(() => {
     async function getExpenses() {
-      const expenses = await fetchExpenses();
+      setIsFetching(true);
+      try {
+        const expenses = await fetchExpenses();
+      } catch (error) {
+        setError("Could not fetch expenses!");
+      }
+
       // setFetchedExpenses(expenses); just setState without refreshing
+      setIsFetching(false);
       expensesCtx.setExpenses(expenses); // set for context from fb
     }
 
@@ -33,6 +44,17 @@ function RecentExpenses() {
 
   //   return expense.date > date7DaysAgo && expense.date <= today;
   // });
+
+  function erorrHandler() {
+    setError(null);
+  }
+  if (error && !isFetching) {
+    return <ErrorOverlay message={error} onConfirm={erorrHandler} />;
+  }
+
+  if (isFetching) {
+    return <LoadingOverlay />;
+  }
 
   return (
     <ExpensesOutput
