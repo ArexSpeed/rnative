@@ -11,21 +11,21 @@ const useFetch = (endpoint, query) => {
   console.log("QUERY", endpoint, " - ", query);
   const options = {
     method: "GET",
-    url: `https://jsearch.p.rapidapi.com/${endpoint}`,
-    params: {
-      ...query,
-    },
+    url: `https://jsearch.p.rapidapi.com/job-details`,
+    params: { job_id: "GSSA4KzQBN0AAAAAAAAAAA==" },
     headers: {
       "X-RapidAPI-Key": "95d9f66ed7msh9e871ed5ec5b82ep19aa8fjsnba7229cc9795",
       "X-RapidAPI-Host": "jsearch.p.rapidapi.com",
     },
   };
+  console.log("OPTIONS", options);
 
   const fetchData = async () => {
     setIsLoading(true);
 
     try {
       const response = await axios.request(options);
+      console.log("RES", response.data);
       setData(response.data.data);
       setIsLoading(false);
     } catch (error) {

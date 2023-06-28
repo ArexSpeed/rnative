@@ -44,14 +44,17 @@ const JobDetails = () => {
             points={data[0].job_highlights?.Qualifications ?? ["N/A"]}
           />
         );
-        break;
       case "Responsibilities":
-        break;
+        return (
+          <Specifics
+            title="Responsibilities"
+            points={data[0].job_highlights?.Responsibilities ?? ["N/A"]}
+          />
+        );
       case "About":
         return (
           <JobAbout info={data[0].job_description ?? "No data provided"} />
         );
-        break;
     }
   };
 
@@ -104,6 +107,12 @@ const JobDetails = () => {
             </View>
           )}
         </ScrollView>
+        <JobFooter
+          url={
+            data[0]?.job_google_link ??
+            "https://careers.google.com/jobs/results/"
+          }
+        />
       </>
     </SafeAreaView>
   );
