@@ -12,3 +12,9 @@ npx create-expo-app -e with-router
 
 - [Expo Router: Docs](https://expo.github.io/router)
 - [Expo Router: Repo](https://github.com/expo/router)
+
+### Publish
+npm i -g expo-cli
+expo publish
+-- yes (update)
+

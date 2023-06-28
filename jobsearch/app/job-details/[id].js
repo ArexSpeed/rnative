@@ -33,7 +33,11 @@ const JobDetails = () => {
   console.log("PARAMS", params);
   console.log(data);
   console.log("ERROR", error);
-  const onRefresh = () => {};
+  const onRefresh = useCallback(() => {
+    setRefreshing(true);
+    refetch();
+    setRefreshing(false);
+  }, []);
 
   const displayTabContent = () => {
     switch (activeTab) {
