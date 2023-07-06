@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "412001614409",
+    "project_id": "whatsup-mern-cdb0d",
+    "storage_bucket": "whatsup-mern-cdb0d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:412001614409:android:07b6ca754b491c1f0f9d98",
+        "android_client_info": {
+          "package_name": "host.exp.exponent"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "412001614409-io6k7u44arucrci92h42khnn6ntct5bv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCrCkT-U5uYsY0FBNmC_lNxZbdTaW6kOsE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "412001614409-io6k7u44arucrci92h42khnn6ntct5bv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
